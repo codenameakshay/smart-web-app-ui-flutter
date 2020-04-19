@@ -63,93 +63,207 @@ class _HomePageState extends State<HomePage> {
             ),
             Expanded(
               flex: 16,
-              child: Container(
-                color: Color.fromARGB(255, 246, 245, 250),
-                child: Column(
-                  children: [
-                    Expanded(
-                      flex: 7,
-                      child: Card(
-                        color: Colors.transparent,
-                        elevation: 0,
-                        child: SizedBox.expand(
-                          child: ShortcutMenu(),
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      flex: 3,
-                      child: Card(
-                        color: Colors.transparent,
-                        elevation: 0,
-                        child: SizedBox.expand(
-                          child: Column(
-                            children: [
-                              Padding(
-                                padding:
-                                    const EdgeInsets.fromLTRB(40, 20, 0, 5),
-                                child: Row(
-                                  children: [
-                                    Text(
-                                      'DEVICES',
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        color:
-                                            Color.fromARGB(255, 184, 180, 204),
-                                      ),
-                                    ),
-                                    Icon(
-                                      Icons.arrow_drop_down,
-                                      color: Color.fromARGB(255, 211, 208, 225),
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      flex: 2,
-                      child: Card(
-                        color: Colors.transparent,
-                        elevation: 0,
-                        child: SizedBox.expand(
-                          child: Column(
-                            children: [
-                              Padding(
-                                padding:
-                                    const EdgeInsets.fromLTRB(40, 20, 0, 5),
-                                child: Row(
-                                  children: [
-                                    Text(
-                                      'ROOMS',
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        color:
-                                            Color.fromARGB(255, 184, 180, 204),
-                                      ),
-                                    ),
-                                    Icon(
-                                      Icons.arrow_drop_up,
-                                      color: Color.fromARGB(255, 211, 208, 225),
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+              child: RightSideBar(),
             ),
           ],
         ),
       ),
+    );
+  }
+}
+
+class RightSideBar extends StatelessWidget {
+  const RightSideBar({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Color.fromARGB(255, 246, 245, 250),
+      child: Column(
+        children: [
+          Expanded(
+            flex: 14,
+            child: Card(
+              color: Colors.transparent,
+              elevation: 0,
+              child: SizedBox.expand(
+                child: ShortcutMenu(),
+              ),
+            ),
+          ),
+          Expanded(
+            flex: 6,
+            child: Card(
+              color: Colors.transparent,
+              elevation: 0,
+              child: SizedBox.expand(
+                child: DevicesMenu(),
+              ),
+            ),
+          ),
+          Expanded(
+            flex: 3,
+            child: Card(
+              color: Colors.transparent,
+              elevation: 0,
+              child: SizedBox.expand(
+                child: RoomsMenu(),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class RoomsMenu extends StatelessWidget {
+  const RoomsMenu({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.fromLTRB(40, 20, 0, 5),
+          child: Row(
+            children: [
+              Text(
+                'ROOMS',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Color.fromARGB(255, 184, 180, 204),
+                ),
+              ),
+              Icon(
+                Icons.arrow_drop_up,
+                color: Color.fromARGB(255, 211, 208, 225),
+              )
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class DevicesMenu extends StatelessWidget {
+  const DevicesMenu({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.fromLTRB(40, 20, 0, 5),
+          child: Row(
+            children: [
+              Text(
+                'DEVICES',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Color.fromARGB(255, 184, 180, 204),
+                ),
+              ),
+              Icon(
+                Icons.arrow_drop_down,
+                color: Color.fromARGB(255, 211, 208, 225),
+              )
+            ],
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Wrap(
+            children: [
+              Card(
+                elevation: 0,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15)),
+                color: Colors.white,
+                child: Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: Icon(
+                    FontAwesomeIcons.solidLightbulb,
+                    color: Color.fromARGB(255, 111, 50, 255),
+                    size: 20,
+                  ),
+                ),
+              ),
+              Card(
+                elevation: 0,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15)),
+                color: Colors.white,
+                child: Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: Icon(
+                    FontAwesomeIcons.box,
+                    color: Color.fromARGB(255, 184, 180, 204),
+                    size: 20,
+                  ),
+                ),
+              ),
+              Card(
+                elevation: 0,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15)),
+                color: Colors.white,
+                child: Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: Icon(
+                    FontAwesomeIcons.laptopCode,
+                    color: Color.fromARGB(255, 184, 180, 204),
+                    size: 20,
+                  ),
+                ),
+              ),
+              Card(
+                elevation: 0,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15)),
+                color: Colors.white,
+                child: Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: Icon(
+                    FontAwesomeIcons.camera,
+                    color: Color.fromARGB(255, 184, 180, 204),
+                    size: 20,
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(4.0),
+                child: DottedBorder(
+                  borderType: BorderType.RRect,
+                  radius: Radius.circular(20),
+                  color: Color.fromARGB(255, 184, 180, 204),
+                  child: Card(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20)),
+                    color: Colors.transparent,
+                    elevation: 0,
+                    child: Padding(
+                      padding: const EdgeInsets.all(16),
+                      child: Icon(
+                        FontAwesomeIcons.plus,
+                        color: Color.fromARGB(255, 184, 180, 204),
+                        size: 16,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        )
+      ],
     );
   }
 }
@@ -164,16 +278,14 @@ class ShortcutMenu extends StatelessWidget {
     return Column(
       children: [
         Padding(
-          padding:
-              const EdgeInsets.fromLTRB(40, 60, 0, 5),
+          padding: const EdgeInsets.fromLTRB(40, 60, 0, 5),
           child: Row(
             children: [
               Text(
                 'SHORTCUTS',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  color:
-                      Color.fromARGB(255, 184, 180, 204),
+                  color: Color.fromARGB(255, 184, 180, 204),
                 ),
               ),
               Icon(
@@ -186,13 +298,11 @@ class ShortcutMenu extends StatelessWidget {
         Row(
           children: [
             Padding(
-              padding: const EdgeInsets.fromLTRB(
-                  40, 10, 20, 5),
+              padding: const EdgeInsets.fromLTRB(40, 10, 20, 5),
               child: Card(
                 elevation: 0,
                 shape: RoundedRectangleBorder(
-                    borderRadius:
-                        BorderRadius.circular(15)),
+                    borderRadius: BorderRadius.circular(15)),
                 color: Color.fromARGB(255, 111, 50, 255),
                 child: Padding(
                   padding: const EdgeInsets.all(20),
@@ -204,39 +314,32 @@ class ShortcutMenu extends StatelessWidget {
                 ),
               ),
             ),
-            Column(
-                crossAxisAlignment:
-                    CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Temperature',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color:
-                          Color.fromARGB(255, 53, 63, 96),
-                    ),
-                  ),
-                  Text(
-                    '24 C',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Color.fromARGB(
-                          255, 157, 153, 177),
-                    ),
-                  )
-                ])
+            Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              Text(
+                'Temperature',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Color.fromARGB(255, 53, 63, 96),
+                ),
+              ),
+              Text(
+                '24 C',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Color.fromARGB(255, 157, 153, 177),
+                ),
+              )
+            ])
           ],
         ),
         Row(
           children: [
             Padding(
-              padding: const EdgeInsets.fromLTRB(
-                  40, 10, 20, 5),
+              padding: const EdgeInsets.fromLTRB(40, 10, 20, 5),
               child: Card(
                 elevation: 0,
                 shape: RoundedRectangleBorder(
-                    borderRadius:
-                        BorderRadius.circular(15)),
+                    borderRadius: BorderRadius.circular(15)),
                 color: Color.fromARGB(255, 255, 144, 102),
                 child: Padding(
                   padding: const EdgeInsets.all(20),
@@ -248,39 +351,32 @@ class ShortcutMenu extends StatelessWidget {
                 ),
               ),
             ),
-            Column(
-                crossAxisAlignment:
-                    CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Internet',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color:
-                          Color.fromARGB(255, 53, 63, 96),
-                    ),
-                  ),
-                  Text(
-                    '74,22',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Color.fromARGB(
-                          255, 157, 153, 177),
-                    ),
-                  )
-                ])
+            Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              Text(
+                'Internet',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Color.fromARGB(255, 53, 63, 96),
+                ),
+              ),
+              Text(
+                '74,22',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Color.fromARGB(255, 157, 153, 177),
+                ),
+              )
+            ])
           ],
         ),
         Row(
           children: [
             Padding(
-              padding: const EdgeInsets.fromLTRB(
-                  40, 10, 20, 5),
+              padding: const EdgeInsets.fromLTRB(40, 10, 20, 5),
               child: Card(
                 elevation: 0,
                 shape: RoundedRectangleBorder(
-                    borderRadius:
-                        BorderRadius.circular(15)),
+                    borderRadius: BorderRadius.circular(15)),
                 color: Color.fromARGB(255, 255, 205, 65),
                 child: Padding(
                   padding: const EdgeInsets.all(20),
@@ -292,68 +388,57 @@ class ShortcutMenu extends StatelessWidget {
                 ),
               ),
             ),
-            Column(
-                crossAxisAlignment:
-                    CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Lights',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color:
-                          Color.fromARGB(255, 53, 63, 96),
-                    ),
-                  ),
-                  Text(
-                    '9',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Color.fromARGB(
-                          255, 157, 153, 177),
-                    ),
-                  )
-                ])
+            Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              Text(
+                'Lights',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Color.fromARGB(255, 53, 63, 96),
+                ),
+              ),
+              Text(
+                '9',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Color.fromARGB(255, 157, 153, 177),
+                ),
+              )
+            ])
           ],
         ),
         Row(
           children: [
             Padding(
-              padding: const EdgeInsets.fromLTRB(
-                  40, 10, 20, 5),
-              child: DottedBorder(borderType: BorderType.RRect,
-              radius: Radius.circular(20),
+              padding: const EdgeInsets.fromLTRB(40, 10, 20, 5),
+              child: DottedBorder(
+                borderType: BorderType.RRect,
+                radius: Radius.circular(20),
                 color: Color.fromARGB(255, 184, 180, 204),
                 child: Card(
                   shape: RoundedRectangleBorder(
-                      borderRadius:
-                          BorderRadius.circular(20)),
+                      borderRadius: BorderRadius.circular(20)),
                   color: Colors.transparent,
                   elevation: 0,
                   child: Padding(
                     padding: const EdgeInsets.all(16),
                     child: Icon(
                       FontAwesomeIcons.plus,
-                      color: Color.fromARGB(
-                          255, 184, 180, 204),
+                      color: Color.fromARGB(255, 184, 180, 204),
                       size: 20,
                     ),
                   ),
                 ),
               ),
             ),
-            Column(
-                crossAxisAlignment:
-                    CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Add',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Color.fromARGB(
-                          255, 157, 153, 177),
-                    ),
-                  )
-                ])
+            Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              Text(
+                'Add',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Color.fromARGB(255, 157, 153, 177),
+                ),
+              )
+            ])
           ],
         ),
       ],
