@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import './rightsidebar.dart';
 import './sidebardivider.dart';
 import './sidebar.dart';
 import 'package:flutter/cupertino.dart';
 import './topbar.dart';
-import 'package:fl_chart/fl_chart.dart';
 import './chart.dart';
 
 class HomePage extends StatefulWidget {
@@ -53,7 +51,15 @@ class _HomePageState extends State<HomePage> {
                   ),
                   Expanded(
                     flex: 1,
-                    child: Row(),
+                    child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text('www.codenameakshay.tech'),
+                          )
+                        ]),
                   )
                 ],
               ),
