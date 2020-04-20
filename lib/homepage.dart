@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import './rightsidebar.dart';
 import './sidebardivider.dart';
 import './sidebar.dart';
+import 'package:flutter/cupertino.dart';
+import './topbar.dart';
+import 'package:fl_chart/fl_chart.dart';
+import './chart.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -29,7 +34,29 @@ class _HomePageState extends State<HomePage> {
             ),
             Expanded(
               flex: 56,
-              child: Column(),
+              child: Column(
+                children: [
+                  Expanded(
+                    flex: 1,
+                    child: TopBar(),
+                  ),
+                  Expanded(
+                    flex: 1,
+                    child: Row(),
+                  ),
+                  Expanded(
+                    flex: 3,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [LineChartSample1()],
+                    ),
+                  ),
+                  Expanded(
+                    flex: 1,
+                    child: Row(),
+                  )
+                ],
+              ),
             ),
             Expanded(
               flex: 1,
